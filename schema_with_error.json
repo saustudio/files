@@ -1,0 +1,363 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/startup-analysis.schema.json",
+  "title": "Startup Analysis Result",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Success"
+    },
+    {
+      "$ref": "#/$defs/Error"
+    }
+  ],
+  "$defs": {
+    "Success": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "project",
+        "verification"
+      ],
+      "properties": {
+        "status": {
+          "const": "ok"
+        },
+        "project": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "applicant"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "applicant": {
+              "type": "string"
+            }
+          }
+        },
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "stage_1_primary_screening",
+            "stage_2_in_depth_analysis",
+            "stage_3_financial_assessment",
+            "stage_4_ai_verification",
+            "stage_5_recommendations"
+          ],
+          "properties": {
+            "stage_1_primary_screening": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "juridical_check",
+                "market_check",
+                "technology_stack",
+                "stage_of_project",
+                "conclusion"
+              ],
+              "properties": {
+                "juridical_check": {
+                  "type": "string"
+                },
+                "market_check": {
+                  "type": "string"
+                },
+                "technology_stack": {
+                  "type": "string"
+                },
+                "stage_of_project": {
+                  "type": "string"
+                },
+                "conclusion": {
+                  "type": "string"
+                }
+              }
+            },
+            "stage_2_in_depth_analysis": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "knowledge_graph",
+                "competition",
+                "usp",
+                "conclusion"
+              ],
+              "properties": {
+                "knowledge_graph": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "technologies",
+                    "market_segments",
+                    "team",
+                    "investors_partners"
+                  ],
+                  "properties": {
+                    "technologies": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "market_segments": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "team": {
+                      "type": "string"
+                    },
+                    "investors_partners": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "competition": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "reporting_risk_suites"
+                  ],
+                  "properties": {
+                    "reporting_risk_suites": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "usp": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "conclusion": {
+                  "type": "string"
+                }
+              }
+            },
+            "stage_3_financial_assessment": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "current_financing",
+                "commercialization",
+                "potential_revenue",
+                "conclusion"
+              ],
+              "properties": {
+                "current_financing": {
+                  "type": "string"
+                },
+                "commercialization": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "potential_revenue": {
+                  "type": "string"
+                },
+                "conclusion": {
+                  "type": "string"
+                }
+              }
+            },
+            "stage_4_ai_verification": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "originality",
+                "logic_errors",
+                "concreteness",
+                "score",
+                "conclusion"
+              ],
+              "properties": {
+                "originality": {
+                  "type": "string"
+                },
+                "logic_errors": {
+                  "type": "string"
+                },
+                "concreteness": {
+                  "type": "string"
+                },
+                "score": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "originality_score",
+                    "confidence_score",
+                    "red_flags"
+                  ],
+                  "properties": {
+                    "originality_score": {
+                      "type": "number"
+                    },
+                    "confidence_score": {
+                      "type": "number"
+                    },
+                    "red_flags": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "conclusion": {
+                  "type": "string"
+                }
+              }
+            },
+            "stage_5_recommendations": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "investment_recommendation",
+                "risks",
+                "expected_roi",
+                "conclusion"
+              ],
+              "properties": {
+                "investment_recommendation": {
+                  "type": "string"
+                },
+                "risks": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "technology_risk",
+                    "market_risk",
+                    "team_risk"
+                  ],
+                  "properties": {
+                    "technology_risk": {
+                      "type": "string"
+                    },
+                    "market_risk": {
+                      "type": "string"
+                    },
+                    "team_risk": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "expected_roi": {
+                  "type": "string"
+                },
+                "conclusion": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "error"
+      ],
+      "properties": {
+        "status": {
+          "const": "error"
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "message"
+          ],
+          "properties": {
+            "code": {
+              "type": "string",
+              "enum": [
+                "FILE_UNREADABLE",
+                "UNSUPPORTED_FORMAT",
+                "CONTENT_EMPTY",
+                "SCHEMA_CONFLICT",
+                "TOO_LARGE",
+                "TIMEOUT",
+                "INTERNAL_ERROR"
+              ]
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "stage": {
+              "type": "string",
+              "enum": [
+                "EXTRACT",
+                "LLM_CALL"
+              ]
+            },
+            "details": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "file": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "sha256": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "correlationId": {
+              "type": "string"
+            },
+            "ts": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "input": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  }
+}
